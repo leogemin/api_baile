@@ -17,7 +17,6 @@ def get_by_hash(hash: str):
             password = encode(keyFile.read().strip())
         cipher_suite = Fernet(password)
         decoded_hash = decode(cipher_suite.decrypt(hash.encode()))
-        print(decoded_hash)
     except (InvalidToken, ValueError, Exception):
         return JSONResponse(content={"erro": "QRCode inválido"})
 
@@ -27,7 +26,6 @@ def get_by_hash(hash: str):
 
     cursor.execute("SELECT * FROM convidados WHERE Convite = ?", (decoded_hash,))
     row = cursor.fetchone()
-    print(row)
 
     if not row:
         return JSONResponse(content={"erro": "Convite não encontrado"})
