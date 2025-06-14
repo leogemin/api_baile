@@ -59,7 +59,7 @@ def check_in(convite: str):
 def get_convites():
     conn = sqlite3.connect("controle.db")
     cursor = conn.cursor()
-    cursor.execute("SELECT COUNT(*) FROM convidados WHERE `Check in` = 1")
+    cursor.execute("SELECT COUNT(*) FROM convidados WHERE `Check in` = '1'")
     count = cursor.fetchone()[0]
     conn.close()
     return JSONResponse(content={"total_convites": count})
