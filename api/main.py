@@ -49,7 +49,7 @@ def check_in(convite: str):
     conn = sqlite3.connect("controle.db")
     cursor = conn.cursor()
 
-    cursor.execute("UPDATE convidados SET `Check in` = 1 WHERE Convite = ?", (convite,))
+    cursor.execute("UPDATE convidados SET `Check in` = '1' WHERE Convite = ?", (convite,))
     conn.commit()
     conn.close()
 
