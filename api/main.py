@@ -30,7 +30,7 @@ def get_by_hash(hash: str):
     if not row:
         return JSONResponse(content={"erro": "Convite não encontrado"})
 
-    if row["Check in"] == 1:
+    if row["Check in"] == int(1):
         return JSONResponse(content={"erro": "O Convite ja fez check in no evento"})
 
     if row["Convite"] != decoded_hash:
